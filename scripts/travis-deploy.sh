@@ -78,7 +78,7 @@ FILES=$*
 mkdir xash3d-deploy
 cd xash3d-deploy
 git init
-git remote add travis-deploy-public https://FWGS-deployer:${GH_TOKEN}@github.com/ProphetArc/xash3d-deploy.git
+git remote add travis-deploy-public https://ProphetArc:${GH_TOKEN}@github.com/ProphetArc/xash3d-deploy.git
 git checkout -b $DEPLOY_BRANCH-$TRAVIS_BRANCH
 yadisk_download $FILES
 generate_readme
