@@ -14,7 +14,7 @@ fi
 append_readme()
 {
 	for arg in $FILES; do
-		echo \* [$arg]\(https://github.com/FWGS/xash3d-deploy/blob/$DEPLOY_BRANCH-$TRAVIS_BRANCH/$arg\?raw\=true\) >> README.md
+		echo \* [$arg]\(https://github.com/ProphetArc/xash3d-deploy/blob/$DEPLOY_BRANCH-$TRAVIS_BRANCH/$arg\?raw\=true\) >> README.md
 		echo >> README.md
 	done
 }
@@ -31,7 +31,7 @@ generate_continious_tag()
 generate_readme()
 {
 	TAG=$(generate_continuous_tag)
-#	echo \# Moved to GitHub Releases at [here]\(https://github.com/FWGS/xash3d-fwgs/releases/tag/$TAG\) >> README.md
+#	echo \# Moved to GitHub Releases at [here]\(https://github.com/ProphetArc/xash3d-fwgs/releases/tag/$TAG\) >> README.md
 #	echo >> README.md
 #	echo >> README.md
 #	echo >> README.md
@@ -43,9 +43,9 @@ generate_readme()
 	(cd $TRAVIS_BUILD_DIR; TZ=UTC git log --pretty=format:'%h %ad %s' --date iso-local -n 10 $REV_RANGE)| cut -d ' ' -f 1-3,5-100 >> README.md
 	echo \`\`\` >> README.md
 	echo >> README.md
-	echo [Code on GitHub]\(https://github.com/FWGS/xash3d-fwgs/tree/$TRAVIS_COMMIT\) >> README.md
+	echo [Code on GitHub]\(https://github.com/ProphetArc/xash3d-fwgs/tree/$TRAVIS_COMMIT\) >> README.md
 	echo >> README.md
-	echo [Full changelog for this build]\(https://github.com/FWGS/xash3d-fwgs/commits/$TRAVIS_COMMIT\) >> README.md
+	echo [Full changelog for this build]\(https://github.com/ProphetArc/xash3d-fwgs/commits/$TRAVIS_COMMIT\) >> README.md
 	echo >> README.md
 	append_readme
 	echo $TRAVIS_COMMIT > commit.txt
@@ -61,7 +61,7 @@ yadisk_download()
 	done
 }
 
-PUSHED_COMMIT=$(curl --fail https://raw.githubusercontent.com/FWGS/xash3d-deploy/$DEPLOY_BRANCH-$TRAVIS_BRANCH/commit.txt)
+PUSHED_COMMIT=$(curl --fail https://raw.githubusercontent.com/ProphetArc/xash3d-deploy/$DEPLOY_BRANCH-$TRAVIS_BRANCH/commit.txt)
 echo "Pushed commit: $PUSHED_COMMIT"
 if [ ! -z "$PUSHED_COMMIT" ]; then
 	REV_RANGE="HEAD...$PUSHED_COMMIT"
@@ -78,7 +78,7 @@ FILES=$*
 mkdir xash3d-deploy
 cd xash3d-deploy
 git init
-git remote add travis-deploy-public https://FWGS-deployer:${GH_TOKEN}@github.com/FWGS/xash3d-deploy.git
+git remote add travis-deploy-public https://FWGS-deployer:${GH_TOKEN}@github.com/ProphetArc/xash3d-deploy.git
 git checkout -b $DEPLOY_BRANCH-$TRAVIS_BRANCH
 yadisk_download $FILES
 generate_readme
