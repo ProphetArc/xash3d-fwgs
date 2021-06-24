@@ -69,8 +69,8 @@ else
 	REV_RANGE="HEAD"
 fi
 
-git config --global user.name FWGS-deployer
-git config --global user.email FWGS-deployer@users.noreply.github.com
+git config --global user.name ProphetArc
+git config --global user.email ProphetArc@users.noreply.github.com
 
 FILES=$*
 
